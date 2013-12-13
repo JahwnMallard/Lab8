@@ -11,11 +11,11 @@ int main(void) {
 	int outputCenter;
 	int outputRight;
 	int outputLeft;
-	moveRobotForward();
-	while (1) {
+	moveRobotForward();  //start off moving forward
+  	while (1) {
 
-		if (outputCenter < 0x205 && outputLeft < 0x190) {
-			TA0CCR1 = 32;
+		if (outputCenter < 0x205 && outputLeft < 0x190) {  //nothing in front or to the left
+			TA0CCR1 = 32; // default left speed
 			moveRobotForward();
 			_delay_cycles(1500);
 
@@ -25,22 +25,19 @@ int main(void) {
 		outputLeft = readLeftSensor();
 
 		if (outputLeft > 0x190) {
-			TA0CCR1 = 39;
+			TA0CCR1 = 39; //medium right turn
 			turnRobotRight();
 			_delay_cycles(2000);
 
 		} else if (outputCenter > 0x205) {
-			TA0CCR1 = 57;
+			TA0CCR1 = 57; //sharp right turn
 			turnRobotRight();
 			_delay_cycles(2500);
 
-		} else {
+		} else {  //if nothing there, set left motor to its default setting
 			TA0CCR1 = 32;
 		}
-//			else if (outputRight < 0x320) {
-//			turnRobotRight(10000);
-//			_delay_cycles(10000);
-//		}
+
 	}
 }
 

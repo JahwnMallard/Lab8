@@ -9,14 +9,14 @@
 #include "Motor_Driver.h"
 void initRobot() {
 
-	P1DIR |= BIT1;                // TA0CCR1 on P1.1
-	P1SEL |= BIT1;                // TA0CCR1 on P1.1
-	P1DIR |= BIT2;                // TA0CCR1 on P1.2
-	P1SEL |= BIT2;                // TA0CCR1 on P1.2
-	P2DIR |= BIT1;                // TA0CCR1 on P1.2
-	P2SEL |= BIT1;                // TA0CCR1 on P1.2
-	P2DIR |= BIT0;                // TA0CCR1 on P1.2
-	P2SEL |= BIT0;                // TA0CCR1 on P1.2
+	P1DIR |= BIT1;
+	P1SEL |= BIT1;
+	P1DIR |= BIT2;
+	P1SEL |= BIT2;
+	P2DIR |= BIT1;
+	P2SEL |= BIT1;
+	P2DIR |= BIT0;
+	P2SEL |= BIT0;
 
 	TA0CTL &= ~MC1 | MC0;
 	TA1CTL &= ~MC1 | MC0;
@@ -30,7 +30,7 @@ void initRobot() {
 	TA0CCR0 = 100;
 	TA0CCR1 = 32;
 	TA1CCR0 = 100;
-	TA1CCR1 = 33;
+	TA1CCR1 = 33; //doesn't really do anything for forward motion, only changes reverse speed
 
 	TA0CCTL1 &= ~OUTMOD_5;
 	TA0CCTL0 &= ~OUTMOD_5;
